@@ -5,13 +5,14 @@ import os
 import sys
 import ast
 
-b = Bridge('<BRIDGE IP>')
+b = Bridge('192.168.1.217')
 
-if sys.argv[1] == "<CLIENT>" and sys.argv[2] == '<USER>': 
+if (sys.argv[1] == "Plex for LG (webOS 04.30.06)" or sys.argv[1] == 'LG 43UH6500-UB') and sys.argv[2] == 'agsl': 
     if os.path.isfile("room_s"):
         f = open("room_s", "r")
         room = ast.literal_eval(f.read())
         f.close()
-        b.set_light([<ALL LIGHTS>], { 'bri': 80, 'on': True, 'transitiontime': 20, 'xy': room['state']['xy']})
+        b.set_light([1, 2, 3], { 'bri': 80, 'on': True, 'transitiontime': 20, 'xy': room['state']['xy']})
     else:
-        b.set_light([<ALL LIGHTS>], { 'bri': 80, 'on': True, 'transitiontime': 20, 'xy': [0.3664, 0.3675]})
+        b.set_light([1, 2, 3], { 'bri': 80, 'on': True, 'transitiontime': 20, 'xy': [0.3664, 0.3675]})
+    #math.floor(room['state']['bri']/2.2)
